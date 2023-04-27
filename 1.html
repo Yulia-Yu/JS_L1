@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Что-то ...</title>
+</head>
+<body>
+    <script>
+        let n = prompt('n = ');
+        if (isNaN(parseFloat(n)) || !isFinite(n) || n < 1){
+            alert('Ошибочное число');
+        }else {
+            n = parseInt(n);
+            let count = 0;
+            let num = 0;
+            let max = 0;
+            for(let i = 1; i <= n; i++)
+            {
+                let j = 1;
+                while(j <= n)
+                {
+                    if (i % j == 0) count ++;
+                    j++;
+                }
+                if (max <= count)
+                {
+                    max = count;
+                    num = i;
+                }
+                count = 0;
+            }
+            document.write('Число с максимальным количеством делителей:' + num);
+        }
+    </script>
+</body>
+</html>

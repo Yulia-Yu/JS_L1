@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Что-то ...</title>
+</head>
+<body>
+    <style>
+        table {
+            border-collapse:collapse;
+            margin: auto;
+        }
+        td {
+            width: 25px;
+            height: 25px;
+        }
+        .black {
+            background: rgb(129, 188, 236);
+        }
+        .white {
+            background: rgb(213, 120, 225);
+}
+    </style>
+    <script>
+        let n = prompt('n = ');
+        if (isNaN(parseFloat(n)) || !isFinite(n) || n < 2 || n > 15 || n % parseInt(n) != 0){
+            alert('Ошибочное число');
+        }else 
+        {
+            document.write('<hr width="100%">');
+            let size = 100;
+            for(let i = 1; i < n; i++)
+            {
+                size -= 100/n; 
+                document.write('<hr width="' + size + '%">');
+            }
+            //
+            let str = '<table>';
+            let flag = true;
+            let meter  = 0;
+            for (let i = 0; i < n; i++)
+            {
+                str += '<tr>';
+                if (flag == true) 
+                {
+                    for(let j = 0; j < n; j++)
+                    {
+                        let classTd = (j % 2 == 0)? 'black' : 'white'; 
+                        str += `<td class="${ classTd }"></td>`;
+                    }
+                    meter++;
+                    if (meter == 2)
+                    {
+                        flag = false;
+                        meter = 0;
+                    }
+                }  
+                else{
+                    for(let j = 0; j < n; j++)
+                    {
+                        let classTd = (j % 2 != 0)? 'black' : 'white'; 
+                        str += `<td class="${ classTd }"></td>`;
+                    }
+                    meter++;
+                    if (meter == 2)
+                    {
+                        flag = true;
+                        meter = 0;
+                    }
+                }
+                str += '</tr>';
+            }
+            document.write(str + '</table>');
+            //
+            document.write('<hr width="' + size + '%">');
+            for(let i = 1; i < n; i++)
+            {
+                size += 100/n; 
+                document.write('<hr width="' + size + '%">');
+            }
+        }
+    </script>
+</body>
+</html>
